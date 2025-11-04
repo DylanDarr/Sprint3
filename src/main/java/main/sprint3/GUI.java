@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -235,9 +234,9 @@ public class GUI extends Application {
     public GridPane CreateGameBoard() {
 
         GridPane gameBoardGid = new GridPane();
-        boxes = new Box[board.getTotalRowColumn()][board.getTotalRowColumn()];
-        for (int i = 0; i < board.getTotalRowColumn(); i++)
-            for (int j = 0; j < board.getTotalRowColumn(); j++)
+        boxes = new Box[board.getBoardSize()][board.getBoardSize()];
+        for (int i = 0; i < board.getBoardSize(); i++)
+            for (int j = 0; j < board.getBoardSize(); j++)
                 gameBoardGid.add(boxes[i][j] = new Box(i, j), j, i);
         drawBoard();
 
@@ -258,7 +257,7 @@ public class GUI extends Application {
                     board = new Board(boardSize);
 
                     board.setGamemodeSelection(gameMode);
-                    board.setRowColumn(boardSize);
+                    board.setBoardSize(boardSize);
 
                     String validGame = board.validGame();
 
@@ -308,8 +307,8 @@ public class GUI extends Application {
     }
 
     public void drawBoard(){
-        for (int row = 0; row < board.getTotalRowColumn(); row++)
-            for (int column = 0; column < board.getTotalRowColumn(); column++) {
+        for (int row = 0; row < board.getBoardSize(); row++)
+            for (int column = 0; column < board.getBoardSize(); column++) {
                 boxes[row][column].getChildren().clear();
                 if (board.getCell(row, column) == Board.Cell.S)
                     boxes[row][column].drawS();

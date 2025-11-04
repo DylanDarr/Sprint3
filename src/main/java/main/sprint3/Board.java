@@ -2,43 +2,40 @@ package main.sprint3;
 
 public class Board {
     public enum Cell {EMPTY, S, O};
-    private Cell[][] grid;
-    private int TOTALROWS;
-    private int TOTALCOLUMNS;
+    private Cell[][] gameGrid;
+    private int BOARDSIZE;
     private String turn;
     private String gamemodeSelected = "";
     private String player1Selection = "";
     private String player2Selection = "";
 
-    public Board(int rowColumn) {
-        TOTALCOLUMNS = rowColumn;
-        TOTALROWS = rowColumn;
-        grid = new Cell[TOTALROWS][TOTALCOLUMNS];
+    public Board(int bSize) {
+        BOARDSIZE = bSize;
+        gameGrid = new Cell[BOARDSIZE][BOARDSIZE];
         createBoard();
     }
 
     public void createBoard() {
-        for (int row = 0; row < TOTALROWS; row++){
-            for (int column = 0; column < TOTALCOLUMNS; column++){
-                grid[row][column] = Cell.EMPTY;
+        for (int row = 0; row < BOARDSIZE; row++){
+            for (int column = 0; column < BOARDSIZE; column++){
+                gameGrid[row][column] = Cell.EMPTY;
             }
         }
         turn = "PLAYER1";
     }
 
     public Cell getCell(int row, int column) {
-        if (row >= 0 && row < TOTALROWS && column >= 0 && column < TOTALCOLUMNS)
-            return grid[row][column];
+        if (row >= 0 && row < BOARDSIZE && column >= 0 && column < BOARDSIZE)
+            return gameGrid[row][column];
         else
             return null;
     }
 
-    public void setRowColumn (int number){
-        TOTALCOLUMNS = number;
-        TOTALROWS = number;
+    public void setBoardSize(int number){
+        BOARDSIZE = number;
     }
 
-    public int getTotalRowColumn() {return TOTALROWS;}
+    public int getBoardSize() {return BOARDSIZE;}
 
     public void setTurn(String str) {turn = str;}
 
@@ -53,7 +50,7 @@ public class Board {
     }
 
     public boolean validBoardSize() {
-        return TOTALROWS >= 3;
+        return BOARDSIZE >= 3;
     }
 
     public void setPlayerSelection(String currentSelected, String player) {
@@ -71,8 +68,8 @@ public class Board {
     public String makeMove(int row, int column){
         if (turn.equals("PLAYER1")){
             if (player1Selection.equals("S") || player1Selection.equals("O")) {
-                if (row >= 0 && row < TOTALROWS && column >= 0 && column < TOTALCOLUMNS && grid[row][column] == Cell.EMPTY) {
-                    grid[row][column] = (player1Selection.equals("S")) ? Cell.S : Cell.O;
+                if (row >= 0 && row < BOARDSIZE && column >= 0 && column < BOARDSIZE && gameGrid[row][column] == Cell.EMPTY) {
+                    gameGrid[row][column] = (player1Selection.equals("S")) ? Cell.S : Cell.O;
                     turn = "PLAYER2";
                     return ("SUCCESS");
                 }
@@ -84,8 +81,8 @@ public class Board {
         }
         else if (turn.equals("PLAYER2")){
             if (player2Selection.equals("S") || player2Selection.equals("O")) {
-                if (row >= 0 && row < TOTALROWS && column >= 0 && column < TOTALCOLUMNS && grid[row][column] == Cell.EMPTY) {
-                    grid[row][column] = (player2Selection.equals("S")) ? Cell.S : Cell.O;
+                if (row >= 0 && row < BOARDSIZE && column >= 0 && column < BOARDSIZE && gameGrid[row][column] == Cell.EMPTY) {
+                    gameGrid[row][column] = (player2Selection.equals("S")) ? Cell.S : Cell.O;
                     turn = "PLAYER1";
                     return ("SUCCESS");
                 }
