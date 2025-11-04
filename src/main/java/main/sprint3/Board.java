@@ -189,7 +189,6 @@ public class Board {
                 if (row >= 0 && row < BOARDSIZE && column >= 0 && column < BOARDSIZE && gameGrid[row][column] == Cell.EMPTY) {
                     gameGrid[row][column] = (player1Selection.equals("S")) ? Cell.S : Cell.O;
                     unsetSOS = scanBoard(row, column, gameGrid[row][column].name());
-                    //turn = "PLAYER2";
                     return ("SUCCESS");
                 }
                 else {return ("INVALID");}
@@ -202,7 +201,7 @@ public class Board {
             if (player2Selection.equals("S") || player2Selection.equals("O")) {
                 if (row >= 0 && row < BOARDSIZE && column >= 0 && column < BOARDSIZE && gameGrid[row][column] == Cell.EMPTY) {
                     gameGrid[row][column] = (player2Selection.equals("S")) ? Cell.S : Cell.O;
-                    turn = "PLAYER1";
+                    unsetSOS = scanBoard(row, column, gameGrid[row][column].name());
                     return ("SUCCESS");
                 }
                 else {return ("INVALID");}
