@@ -1,7 +1,7 @@
 package main.sprint3;
 
 public class Board {
-    public enum Cell {EMPTY, S, O};
+    public enum Cell {EMPTY, S, O}
     private Cell[][] gameGrid;
     public enum Color {RED, BLUE, PURPLE, BLACK}
     private Color[][] colorGrid;
