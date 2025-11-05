@@ -19,7 +19,6 @@ public class SOSCheckTest {
     public void tearDown() throws Exception{
         board = null;
     }
-
     @Test
     public void player1SOSSimpleGame() {
         board.setGamemodeSelection("SIMPLE");

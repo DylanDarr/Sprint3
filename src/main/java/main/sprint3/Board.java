@@ -52,7 +52,7 @@ public class Board {
 
     public int getBoardSize() {return BOARDSIZE;}
 
-    //public void setTurn(String str) {turn = str;}
+    public void setTurn(String str) {turn = str;}
 
     public String getTurn() {
         return turn;
